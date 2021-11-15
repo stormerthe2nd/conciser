@@ -1,19 +1,20 @@
+
 const expandCombinations = function (n, arr) {
   console.log(arr)
   var each = arr[0]
   let newArr = arr
-  let skip = 2
-  let index = 1
-  for (let i in [...Array(Math.floor(n / each)).keys()]) {
-    let index2 = 1
-    while (index2 < each) {
-      newArr[index] = arr[index] + arr[index + index2]
-      delete newArr[index + index2]
-      if (newArr.filter(Number).length > 1) console.log(newArr.filter(Number))
-      index2++
-    }
-    skip++
-    index = index + skip
+  var end = function () {
+    let endArr = []
+    for (_ in [...Array(Math.floor(n / each)).keys()]) endArr.push(each)
+    let last = n - endArr.reduce((a, b) => a + b, 0)
+    if (last > 0) endArr.push(last)
+    return endArr.toString()
+  }()
+  var jodi = 2
+
+  while (end !== newArr.toString()) {
+    console.log(end)
+    break
   }
 }
 
@@ -32,4 +33,4 @@ const findCombinationOf = function (num) {
   })
 }
 
-findCombinationOf(8);
+findCombinationOf(9);

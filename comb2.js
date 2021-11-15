@@ -31,4 +31,4 @@ function possibilities(num) {
   }
 }
 
-possibilities(7)
+possibilities(13)
