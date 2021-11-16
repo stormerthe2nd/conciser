@@ -10,13 +10,19 @@ const expandCombinations = function (n, arr) {
     if (last > 0) endArr.push(last)
     return endArr.toString()
   }()
-  var jodi = 2
+  let loop = 2
+  // newArr.toString() !== end
+  let index = 1
+  while (newArr[index + 1]) {
 
-  while (end !== newArr.toString()) {
-    console.log(end)
-    break
+    newArr[index] = arr[index] + arr[index + 1]
+    newArr.splice(index + 1, 1)
+    console.log(newArr)
+    index++
+
   }
 }
+// 
 
 
 const findCombinationOf = function (num) {
@@ -33,4 +39,4 @@ const findCombinationOf = function (num) {
   })
 }
 
-findCombinationOf(9);
+findCombinationOf(8);
