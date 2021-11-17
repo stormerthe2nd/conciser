@@ -2,7 +2,7 @@
 const expandCombinations = function (n, arr) {
   console.log(arr)
   var each = arr[0]
-  let newArr = arr
+  let newArr = [...arr]
   var end = function () {
     let endArr = []
     for (_ in [...Array(Math.floor(n / each)).keys()]) endArr.push(each)
@@ -10,16 +10,23 @@ const expandCombinations = function (n, arr) {
     if (last > 0) endArr.push(last)
     return endArr.toString()
   }()
-  let loop = 2
+  let loop = 1
   // newArr.toString() !== end
   let index = 1
   while (newArr[index + 1]) {
-
-    newArr[index] = arr[index] + arr[index + 1]
-    newArr.splice(index + 1, 1)
-    console.log(newArr)
-    index++
-
+    for (_ in [...Array(loop).keys()]) {
+      newArr[index] = arr[index] + arr[index + 1]
+      newArr.splice(index + 1, 1)
+      console.log(newArr)
+      index++
+    }
+    if (!newArr[index + 1] && loop < each) {
+      newArr = [...arr]
+      index = 1
+      loop++
+      console.log("loop change", loop, each)
+      console.log(newArr)
+    }
   }
 }
 // 
