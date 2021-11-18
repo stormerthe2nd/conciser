@@ -1,6 +1,6 @@
 
 const expandCombinations = function (n, arr) {
-  console.log(arr)
+  console.log("starting ", arr)
   var each = arr[0]
   let newArr = [...arr]
   var end = function () {
@@ -14,12 +14,16 @@ const expandCombinations = function (n, arr) {
   // newArr.toString() !== end
   let index = 1
   while (newArr[index + 1]) {
+    let indVal = 1
     for (_ in [...Array(loop).keys()]) {
-      newArr[index] = arr[index] + arr[index + 1]
+      indVal = indVal + arr[index + 1]
+      indVal = arr[index] + arr[index + 1]
+      newArr[index] = indVal
       newArr.splice(index + 1, 1)
       console.log(newArr)
-      index++
     }
+    index++
+    if (newArr.toString() === end) break
     if (!newArr[index + 1] && loop < each) {
       newArr = [...arr]
       index = 1
