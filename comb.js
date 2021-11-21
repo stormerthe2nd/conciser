@@ -11,24 +11,25 @@ const expandCombinations = function (n, arr) {
     return endArr.toString()
   }()
   let loop = 1
-  // newArr.toString() !== end
   let index = 1
+  // newArr.toString() !== end
   while (newArr[index + 1]) {
     let indVal = 1
     for (_ in [...Array(loop).keys()]) {
+      console.log(indVal + arr[index + 1])
       indVal = indVal + arr[index + 1]
-      indVal = arr[index] + arr[index + 1]
-      newArr[index] = indVal
-      newArr.splice(index + 1, 1)
-      console.log(newArr)
+      newArr.splice(index, 1)
     }
+    newArr[index] = indVal
+    console.log(newArr)
     index++
+
     if (newArr.toString() === end) break
     if (!newArr[index + 1] && loop < each) {
       newArr = [...arr]
       index = 1
       loop++
-      console.log("loop change", loop, each)
+      console.log("loop change", loop)
       console.log(newArr)
     }
   }
