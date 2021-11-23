@@ -12,9 +12,6 @@ const findCombinationOf = function (num) {
   })
 }
 
-const addInPairs = function (pairs) {
-
-}
 
 const extractCombinations = function (arr, n) {
   console.log("starting ", arr)
@@ -30,28 +27,30 @@ const extractCombinations = function (arr, n) {
   let longestLoop = 1
   let index = 1
   let pairs = 1
+  let pairLimit = 1
   while (arr.toString() !== end) {
     longestLoop++
-    if (longestLoop > 10) break
+    if (longestLoop > 40) break
 
     var val = arr[index]
-    for (_ in [...Array(pairs).keys()]) {
+    for (_ in [...Array(pairLimit).keys()]) {
       val = val + arr[index + 1]
       arr.splice(index + 1, 1)
     }
     if (!val) {
-      pairs++
+      pairLimit++
       index = 1
       arr = [...base]
-      console.log("continuing with " + pairs + " " + index)
+      console.log("continuing with " + pairLimit + " " + index)
       continue
     }
     arr[index] = val
     console.log(arr)
-    index++
+    // pairs++
+    index++  // pushing index
   }
 
 }
 
 
-extractCombinations([4, 1, 1, 1, 1, 1], 9);
+extractCombinations([4, 1, 1, 1, 1, 1, 1, 1, 1], 12);
